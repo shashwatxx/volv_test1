@@ -16,7 +16,7 @@ abstract class VolvCarouselController {
 }
 
 class VolvCarouselControllerImpl implements VolvCarouselController {
-  final Completer<Null> _readyCompleter = Completer<Null>();
+  final Completer _readyCompleter = Completer();
 
   VolvCarouselState? _state;
 
@@ -27,11 +27,9 @@ class VolvCarouselControllerImpl implements VolvCarouselController {
     }
   }
 
-  @override
   bool get ready => _state != null;
 
-  @override
-  Future<Null> get onReady => _readyCompleter.future;
+  Future get onReady => _readyCompleter.future;
 
   /// Animates the controlled [CarouselSlider] to the next page.
   ///
