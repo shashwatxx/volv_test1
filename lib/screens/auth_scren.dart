@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:volv_testi/services/firebase_service.dart';
 import 'package:volv_testi/utils/utils.dart';
 import 'package:volv_testi/widgets/carousel/c_options.dart';
 import 'package:volv_testi/widgets/carousel/c_slider.dart';
 import 'package:volv_testi/widgets/carousel/vc_controller.dart';
+import 'package:volv_testi/widgets/sigin_provider_button.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -13,7 +15,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  int _current = 0;
   final VolvCarouselController _controller = VolvCarouselController();
   final List<String> imgList = [
     'assets/seagull.png',
@@ -22,6 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
   ];
 
   int _index = 0;
+  final FirebaseService _firebaseService = FirebaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +83,6 @@ class _AuthScreenState extends State<AuthScreen> {
                         onPageChanged: (index) {
                           setState(() {
                             _index = index;
-                            _current = index;
                           });
                         }),
                   ),
@@ -111,23 +112,25 @@ class _AuthScreenState extends State<AuthScreen> {
                     }).toList(),
                   ),
                   const SizedBox(height: 80),
-                  SigninProviderWidget(
+                  SigninProviderButton(
                     icon: "assets/apple.png",
                     label: "Apple",
                     onTap: () {
-                      setState(() {
-                        _index = 1;
-                      });
+                      Fluttertoast.showToast(msg: "Login succesfull!");
+                      Navigator.of(context).pushNamed('/home');
+                      //TODO: implement apple sign in
+                      // _firebaseService.signInwithApple();
                     },
                   ),
                   const SizedBox(height: 20),
-                  SigninProviderWidget(
+                  SigninProviderButton(
                     icon: "assets/google.png",
                     label: "Google",
                     onTap: () {
-                      setState(() {
-                        _index = 2;
-                      });
+                      Fluttertoast.showToast(msg: "Login succesfull!");
+                      Navigator.of(context).pushNamed('/home');
+                      //TODO: implement google sign in
+                      // _firebaseService.signInwithGoogle();
                     },
                   ),
                   const SizedBox(height: 20),
@@ -153,47 +156,6 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             );
           }),
-        ),
-      ),
-    );
-  }
-}
-
-class SigninProviderWidget extends StatelessWidget {
-  final String icon;
-  final String label;
-  final Function()? onTap;
-
-  const SigninProviderWidget(
-      {Key? key, required this.icon, required this.label, required this.onTap})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.4),
-            borderRadius: BorderRadius.circular(20)),
-        child: Row(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              icon,
-              height: size.width * 0.075,
-            ),
-            SizedBox(
-              width: size.width * 0.12,
-            ),
-            Text(
-              'Sign in with $label',
-              style: GoogleFonts.poppins(
-                  fontSize: size.width * 0.045, fontWeight: FontWeight.w500),
-            ),
-          ],
         ),
       ),
     );
