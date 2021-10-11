@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:volv_testi/utils/utils.dart';
 
-import 'c_state.dart';
+import 'vc_state.dart';
 
 abstract class VolvCarouselController {
   Future<void> nextPage({Duration? duration, Curve? curve});

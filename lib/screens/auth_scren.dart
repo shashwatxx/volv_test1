@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:volv_testi/services/firebase_service.dart';
 import 'package:volv_testi/utils/utils.dart';
-import 'package:volv_testi/widgets/carousel/c_options.dart';
-import 'package:volv_testi/widgets/carousel/c_slider.dart';
+import 'package:volv_testi/widgets/carousel/vc_options.dart';
+import 'package:volv_testi/widgets/carousel/vc_slider.dart';
 import 'package:volv_testi/widgets/carousel/vc_controller.dart';
 import 'package:volv_testi/widgets/sigin_provider_button.dart';
 

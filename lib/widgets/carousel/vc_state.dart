@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'c_options.dart';
+import 'vc_options.dart';
 
 class VolvCarouselState {
   /// The [CarouselOptions] to create this state
