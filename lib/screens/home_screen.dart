@@ -12,15 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String imageUrl = data[0].imageUrl;
+  String imageUrl = data[0].mediaData;
 
-  void _onScroll(ScrollEventType type, {int? currentIndex}) {
+  void _onScroll(ScrollEventType type, {int currentIndex = 0}) {
     print(
         "Scroll callback received with data: {type: $type, and index: $currentIndex}");
     setState(() {
-      imageUrl = currentIndex != null
-          ? data[currentIndex].imageUrl
-          : "https://wallup.net/wp-content/uploads/2018/03/19/580174-colorful-blurred-vertical-portrait_display-748x1330.jpg";
+      imageUrl = data[currentIndex].mediaData;
     });
   }
 
@@ -40,12 +38,12 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         // alignment: Alignment.center,
         children: [
-          BackgroundImageWidget(imageUrl: data[0].imageUrl),
+          BackgroundImageWidget(imageUrl: imageUrl),
           Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: size.width,
-                height: size.height * 0.50,
+                height: size.height * 0.45,
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 margin:

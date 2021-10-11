@@ -1,14 +1,15 @@
 import 'package:flutter/widgets.dart';
 
 enum ScrollEventType {
-  SCROLLED_FORWARD,
-  SCROLLED_BACKWARDS,
-  NO_SCROLL_THRESHOLD,
-  NO_SCROLL_END_OF_LIST,
-  NO_SCROLL_START_OF_LIST,
+  scrolledForward,
+  scrolledBackwards,
+  noScrollThreshold,
+  noScrollEndOfList,
+  noScrollStartOfList,
 }
 
-typedef void ScrollEventCallback(ScrollEventType type, {int currentIndex});
+typedef ScrollEventCallback = void Function(ScrollEventType type,
+    {int currentIndex});
 
 /// A vertical scroller
 ///
@@ -128,7 +129,7 @@ class _VolvCustomScrollerState extends State<VolvCustomScroller>
                   if (_cardIndex == 0) {
                     // we are trying to swipe back beyond the first card, if callback exists, call it
                     widget.onScrollEvent.call(
-                        ScrollEventType.NO_SCROLL_START_OF_LIST,
+                        ScrollEventType.noScrollStartOfList,
                         currentIndex: 0);
                     _state = DragState.animatingToCancel;
                   } else {
@@ -138,14 +139,12 @@ class _VolvCustomScrollerState extends State<VolvCustomScroller>
                   }
                 } else if (positiveDragThresholdMet &&
                     _cardIndex == widget.contentSize - 1) {
-                  widget.onScrollEvent.call(
-                      ScrollEventType.NO_SCROLL_END_OF_LIST,
+                  widget.onScrollEvent.call(ScrollEventType.noScrollEndOfList,
                       currentIndex: widget.contentSize - 1);
                   _state = DragState.animatingToCancel;
                 } else {
                   // Thresholds not met so relaxing back to initial state
-                  widget.onScrollEvent
-                      .call(ScrollEventType.NO_SCROLL_THRESHOLD);
+                  widget.onScrollEvent.call(ScrollEventType.noScrollThreshold);
                   _state = DragState.animatingToCancel;
                 }
                 setState(() {
@@ -195,12 +194,12 @@ class _VolvCustomScrollerState extends State<VolvCustomScroller>
             switch (_dragState) {
               case DragState.animatingForward:
                 _newCardIndex++;
-                widget.onScrollEvent.call(ScrollEventType.SCROLLED_FORWARD,
+                widget.onScrollEvent.call(ScrollEventType.scrolledForward,
                     currentIndex: _newCardIndex);
                 break;
               case DragState.animatingBackward:
                 _newCardIndex--;
-                widget.onScrollEvent.call(ScrollEventType.SCROLLED_BACKWARDS,
+                widget.onScrollEvent.call(ScrollEventType.scrolledBackwards,
                     currentIndex: _newCardIndex);
                 break;
               case DragState.animatingToCancel:

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "220004997102",
+    "project_id": "volvtest1",
+    "storage_bucket": "volvtest1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220004997102:android:8c7d8fd803bebfd0a960ff",
+        "android_client_info": {
+          "package_name": "com.example.volv_testi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220004997102-ea50bgb2dviisbhi5s02049l19ichb62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.volv_testi",
+            "certificate_hash": "dc8cabe137152d44d3a94c2fc191cca30eee484c"
+          }
+        },
+        {
+          "client_id": "220004997102-eqd1c9edrn2nd69cvf0i7n9e29su98es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHhVmMUT7-LBJzLixpJ8kaDSPdkFy2p0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220004997102-eqd1c9edrn2nd69cvf0i7n9e29su98es.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "220004997102-j8sjob22tvsj1knv9jno554qc7c75n6e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.volvTesti"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

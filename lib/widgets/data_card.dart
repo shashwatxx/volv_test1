@@ -36,33 +36,42 @@ class DataCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Icon(FontAwesomeIcons.angleDoubleUp),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18)),
-              elevation: 3,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
-                child: Text(
-                  "CHECK IT OUT",
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+            TextButton.icon(
+              onPressed: null,
+              icon: Icon(
+                FontAwesomeIcons.clock,
+                size: size.height * 0.025,
+                color: Colors.grey.shade300,
+              ),
+              label: Text(
+                data.postedTime,
+                style: GoogleFonts.poppins(
+                  color: Colors.grey.shade400,
                 ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [
-                  Color.fromRGBO(247, 220, 202, 1),
-                  Color.fromRGBO(214, 220, 235, 1),
-                ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-                borderRadius: BorderRadius.circular(25),
-              ),
-              padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                'assets/send.png',
-                height: size.width * 0.07,
-              ),
+            SizedBox(
+              width: size.width * 0.05,
+            ),
+            Text(
+              "CHECK IT OUT",
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500, color: Colors.orange),
+            ),
+            SizedBox(
+              width: size.width * 0.05,
+            ),
+            Row(
+              children: [
+                Text(
+                  "Share",
+                  style: GoogleFonts.poppins(color: Colors.grey),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Icon(Icons.file_upload_outlined, color: Colors.grey)
+              ],
             )
           ],
         )

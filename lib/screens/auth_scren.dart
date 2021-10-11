@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:volv_testi/services/firebase_service.dart';
 import 'package:volv_testi/utils/utils.dart';
+import 'package:volv_testi/widgets/carousel/vc_controller.dart';
 import 'package:volv_testi/widgets/carousel/vc_options.dart';
 import 'package:volv_testi/widgets/carousel/vc_slider.dart';
-import 'package:volv_testi/widgets/carousel/vc_controller.dart';
 import 'package:volv_testi/widgets/sigin_provider_button.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -116,8 +116,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     icon: "assets/apple.png",
                     label: "Apple",
                     onTap: () {
-                      Fluttertoast.showToast(msg: "Login succesfull!");
                       Navigator.of(context).pushNamed('/home');
+                      Fluttertoast.showToast(msg: "Login succesfull!");
                       //TODO: implement apple sign in
                       // _firebaseService.signInwithApple();
                     },
@@ -127,10 +127,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     icon: "assets/google.png",
                     label: "Google",
                     onTap: () {
-                      Fluttertoast.showToast(msg: "Login succesfull!");
                       Navigator.of(context).pushNamed('/home');
+                      Fluttertoast.showToast(msg: "Login succesfull!");
                       //TODO: implement google sign in
-                      // _firebaseService.signInwithGoogle();
+                      // _firebaseService.signInwithGoogle().then(
+                      //     (value) => Navigator.of(context).pushNamed('/home'));
                     },
                   ),
                   const SizedBox(height: 20),
